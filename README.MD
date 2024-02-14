@@ -17,3 +17,6 @@ npm i typescript @types/node -D
  npm i zod
 
  npm i @fastify/cookie
+
+
+  npm i ioredis
