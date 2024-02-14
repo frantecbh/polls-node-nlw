@@ -10,3 +10,5 @@ npm i typescript @types/node -D
 
  docker compose up -d
  docker ps
+
+ npx prisma init
