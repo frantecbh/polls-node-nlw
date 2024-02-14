@@ -12,3 +12,6 @@ npm i typescript @types/node -D
  docker ps
 
  npx prisma init
+
+
+ npm i zod
