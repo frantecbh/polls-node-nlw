@@ -1,6 +1,7 @@
 import z from 'zod'
 import { FastifyInstance } from 'fastify'
 import { randomUUID } from 'node:crypto'
+import { prisma } from '../database/prisma'
 
 export async function voteOnPoll(app: FastifyInstance) {
   app.post('/polls/:pollId/votes', async (request, replay) => {

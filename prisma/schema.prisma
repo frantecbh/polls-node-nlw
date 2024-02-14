@@ -11,11 +11,13 @@ datasource db {
 }
 
 model Poll {
-  id        String       @id @default(uuid())
+  id        String   @id @default(uuid())
   title     String
-  createdAt DateTime     @default(now())
-  updatedAt DateTime     @updatedAt
-  options   PollOption[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  options PollOption[]
+  vote    Vote[]
 
   @@map("polls")
 }
@@ -25,4 +27,21 @@ model PollOption {
   title  String
   pollId String
   poll   Poll   @relation(fields: [pollId], references: [id])
+
+  vote Vote[]
+}
+
+model Vote {
+  id        Int      @id @default(autoincrement())
+  sessioId  String
+  createdAt DateTime @default(now())
+
+  pollOptionId String
+  pollOption   PollOption @relation(fields: [pollOptionId], references: [id])
+
+  pollId String
+  poll   Poll   @relation(fields: [pollId], references: [id])
+
+  @@unique([sessioId, pollId])
+  @@map("votes")
 }
